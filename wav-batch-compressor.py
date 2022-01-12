@@ -42,8 +42,10 @@ def getAllDir(path, out):
 
 def run_proc(cmd):
     proc = subprocess.run(cmd, capture_output=True)
-    print(proc.stdout.decode() + proc.stderr.decode())
-    return cmd, proc.returncode, proc.stdout.decode() + proc.stderr.decode()
+    ffout = proc.stdout.decode() + proc.stderr.decode()
+    if len(ffout) > 3:
+        print(ffout)
+    return cmd, proc.returncode, ffout
 
 
 if __name__ == "__main__":
